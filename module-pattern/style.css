@@ -1,0 +1,64 @@
+html {
+  font-family: 'Helevetica', sans-serif;
+}
+
+body {
+  /* color: #333; */
+  font-weight: 100;
+  max-width: 50em;
+  margin: 0 auto;
+  background-color: #e6e4d7;
+}
+
+div:focus {
+  outline: none;
+}
+
+#heading {
+  font-size: 48px;
+  padding-top: 30px;
+}
+
+#toolbar {
+  background-color: lightgrey;
+}
+
+#content {
+  padding-top: 10px;
+  font-size: 24px;
+}
+
+.toolbar-buttons {
+  padding: 10px;
+}
+
+/**
+ * Text area
+ */
+#newword-content {
+  padding: 20px;
+  background-color: #ececec;
+}
+
+#newword-create-doc-msg {
+  background-color: white;
+  padding: 10px;
+}
+
+#newword-rename-doc-msg {
+  background-color: white;
+  padding: 10px;
+  transition: opacity 3s ease-in-out;
+}
+
+/**
+ * Document select list
+ */
+.newword-doc-selector-container p {
+  cursor: pointer;
+}
+
+.newword-selected-document {
+  background-color: lightgrey;
+  padding: 10px;
+}
