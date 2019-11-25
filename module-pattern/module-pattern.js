@@ -71,64 +71,70 @@ let newWord = (() => {
       *******************************************************************************************************************/
     let generateHtml = () => {    
       // Message area: prompts the user to select or create a ne document
-      let createDocumentMessage = document.createElement('div');
-      createDocumentMessage.id = `${newWord.docEditorId}-create-doc-msg`;
-      createDocumentMessage.textContent = 'Select or create a new document';
+      // let createDocumentMessage = document.querySelector(`#${newWord.docEditorId}-create-doc-msg`);
+      // // createDocumentMessage.id = `${newWord.docEditorId}-create-doc-msg`;
+      // createDocumentMessage.textContent = 'Select or create a new document';
       // Append the messages to the root application element
-      newWord.rootElement.appendChild(createDocumentMessage);
+      // newWord.rootElement.appendChild(createDocumentMessage);
 
       // pseaduo code: 
       // goal) when a doc has been created, display a message that is dispalyed for 5 seconds
       // 1) create the html but hide it by default
       // 2) when doc has been renamed, display the "renamed messgage"
-      let renamedDocumentMessage = document.createElement('div');
-      renamedDocumentMessage.id = `${newWord.docEditorId}-rename-doc-msg`;
-      renamedDocumentMessage.textContent = 'Document has been renamed';
+      // let renamedDocumentMessage = document.createElement('div');
+      // renamedDocumentMessage.id = `${newWord.docEditorId}-rename-doc-msg`;
+      // renamedDocumentMessage.textContent = 'Document has been renamed';
+      // renamedDocumentMessage.style.display = 'none';
+      // // Append the messages to the root application element
+      // newWord.rootElement.appendChild(renamedDocumentMessage);
+
+      let renamedDocumentMessage = document.querySelector(`#${newWord.docEditorId}-rename-doc-msg`);
       renamedDocumentMessage.style.display = 'none';
-      // Append the messages to the root application element
-      newWord.rootElement.appendChild(renamedDocumentMessage);
       
       // Create document button: enables the user to create a document
-      let createDocument = document.createElement('button');
-      createDocument.id = `${newWord.docEditorId}-create-document`;
-      createDocument.textContent = 'Create new document';
-      // Append the new document button to the root application element
-      newWord.rootElement.appendChild(createDocument);
+      // let createDocument = document.createElement('button');
+      // createDocument.id = `${newWord.docEditorId}-create-document`;
+      // createDocument.textContent = 'Create new document';
+      // // Append the new document button to the root application element
+      // newWord.rootElement.appendChild(createDocument);
             
       // Delete document button: enables the user to delete a document
-      let deleteDocumentButton = document.createElement('button');
-      deleteDocumentButton.id = `${newWord.docEditorId}-delete-document`;
-      deleteDocumentButton.textContent = 'Delete document';
-      // Append the delete document button to the root application element
-      newWord.rootElement.appendChild(deleteDocumentButton);
+      // let deleteDocumentButton = document.createElement('button');
+      // deleteDocumentButton.id = `${newWord.docEditorId}-delete-document`;
+      // deleteDocumentButton.textContent = 'Delete document';
+      // // Append the delete document button to the root application element
+      // newWord.rootElement.appendChild(deleteDocumentButton);
 
       // Rename document button: enables the user to delete a document
-      let renameDocumentButton = document.createElement('button');
-      renameDocumentButton.id = `${newWord.docEditorId}-rename-document`;
-      renameDocumentButton.textContent = 'Rename document';
-      // Append the delete document button to the root application element
-      newWord.rootElement.appendChild(renameDocumentButton);
+      // let renameDocumentButton = document.createElement('button');
+      // renameDocumentButton.id = `${newWord.docEditorId}-rename-document`;
+      // renameDocumentButton.textContent = 'Rename document';
+      // // Append the delete document button to the root application element
+      // newWord.rootElement.appendChild(renameDocumentButton);
 
       // Sort documents button: enables the user to sort documents
-      let sortButton = document.createElement('button');
-      sortButton.id = `${newWord.docEditorId}-sort-documents`;
-      sortButton.textContent = 'Sort';
-      // Append the new document button to the root application element
-      newWord.rootElement.appendChild(sortButton);
+      // let sortButton = document.createElement('button');
+      // sortButton.id = `${newWord.docEditorId}-sort-documents`;
+      // sortButton.textContent = 'Sort';
+      // // Append the new document button to the root application element
+      // newWord.rootElement.appendChild(sortButton);
 
       // create a new div element
-      let documentContainer = document.createElement("div");
+      // let documentContainer = document.createElement("div");
 
       // See https://developer.mozilla.org/en-US/docs/Web/API/Element/id for how to use the id property directly
       //documentContainer.id = 'document-container';
-      documentContainer.setAttribute('id',`${newWord.docEditorId}-document-container`)
+      // documentContainer.setAttribute('id',`${newWord.docEditorId}-document-container`)
+      // documentContainer.style.display = 'none';
+
+      let documentContainer = document.querySelector(`#${newWord.docEditorId}-document-container`);
       documentContainer.style.display = 'none';
 
       // # See readme: Add string of HTML inside another element
-      documentContainer.innerHTML += `<div id="${newWord.docEditorToolbar}"></div><div id="${newWord.docEditorContent}" contenteditable="true"></div>`;
+      //documentContainer.innerHTML += `<div id="${newWord.docEditorToolbar}"></div><div id="${newWord.docEditorContent}" contenteditable="true"></div>`;
 
       // Append the text area to the root application element
-      newWord.rootElement.appendChild(documentContainer);
+      //newWord.rootElement.appendChild(documentContainer);
 
       createToolbarButtons();
     };
@@ -257,8 +263,12 @@ let newWord = (() => {
       removeDocumentSelectContainer();
 
       // @JC 10/08/18: create a container for the docuent lsit to reside in
-      let docSelectorContainer = document.createElement("div");
-      docSelectorContainer.setAttribute('class',`${newWord.docEditorId}-doc-selector-container`);
+      // let docSelectorContainer = document.createElement("div");
+      // docSelectorContainer.setAttribute('id',`${newWord.docEditorId}-doc-selector-container`);
+
+      // JC 21/5/19
+      let docSelectorContainer = document.querySelector(`#${newWord.docEditorId}-doc-selector-container`);
+
 
       // @JC 10/08/18: loop through localStorage, add a click handler to each item,
       // then dsiaply the documents contents in the editor
@@ -289,7 +299,7 @@ let newWord = (() => {
 
           // @JC 31/8/18: Remove any previous highlighted classes
           // NOTE: this logic is pretty much doing the same as the code below
-          let docSelectorContainer = document.querySelector(`.${newWord.docEditorId}-doc-selector-container`);
+          let docSelectorContainer = document.querySelector(`#${newWord.docEditorId}-doc-selector-container`);
           for(let i=0; i<docSelectorContainer.children.length; i++) {
           	let child = docSelectorContainer.children[ i ];
           	child.classList = [];
@@ -299,7 +309,7 @@ let newWord = (() => {
         });
 
         // Append the document selector to the root element
-        newWord.rootElement.append(docSelectorContainer);
+        //newWord.rootElement.append(docSelectorContainer);
       }
 
       // @JC 12/9/18: Highlight the newly created document
@@ -307,7 +317,7 @@ let newWord = (() => {
       // click handler so refactor to one functon
       if( newWord.newlyCreatedDoc  ) {
 
-        let docSelectorContainer = document.querySelector(`.${newWord.docEditorId}-doc-selector-container`);
+        let docSelectorContainer = document.querySelector(`#${newWord.docEditorId}-doc-selector-container`);
         for(let i=0; i<docSelectorContainer.children.length; i++) {
           let child = docSelectorContainer.children[ i ];
 
@@ -389,7 +399,7 @@ let newWord = (() => {
         document.getElementById('body').style.color = '#dedede';
 
         // document list
-        let themeDocList = document.getElementsByClassName(newWord.docEditorId+'-doc-selector-container')[0].children
+        let themeDocList = document.getElementById(newWord.docEditorId+'-doc-selector-container');
         for(let i=0; i<themeDocList.length; i++) {
         	// console.log(a[ i ]);
         	themeDocList[ i ].style.color = '#9f9fff';
@@ -468,18 +478,36 @@ let newWord = (() => {
 
         debugger
         let docList = newWord.documentList;
-        let newDocumentName;
+        let input;
 
         docList.forEach(element => {
           console.log('elemtn is: '+element);
 
           if(element === newWord.documentName) {
             console.log('We have selected the doucment: '+newWord.documentName);
-            newWord.newDocumentName = window.prompt('Rename document');
+            input = window.prompt('Rename document');
+            
+            // If the user didnt add a new name, breakout of the loop.
+            if (input === null || input === ' ') {                   
+              return;
+            } else {
+              // Set the document name to the new value
+              newWord.newDocumentName = input;
+            }            
           }
         });
 
+        // If a document has been selected, but no name has been added then breakout of the function call.
+        if(input === null || input === "") {
+          return;
+        }
+
+        // To supplement the above if statement, if no document was selected, then a null value will be set. If this is the case, then we simply return and breakout of the function call.
         let a = localStorage.getItem( `${newWord.docEditorId}-${newWord.documentName}`);
+        if(a==null) {
+          return;
+        }
+
         localStorage.setItem(`${newWord.docEditorId}-${newWord.newDocumentName}`, a );
         localStorage.removeItem( `${newWord.docEditorId}-${newWord.documentName}` );
 
@@ -550,11 +578,25 @@ let newWord = (() => {
     * Remove document select container  
     */
     let removeDocumentSelectContainer = () => {      
+      debugger
       let rootElId = document.getElementById(newWord.rootElement.id);
-      let documentContainer = document.querySelector(`.${newWord.docEditorId}-doc-selector-container`);
+      let documentContainer = document.querySelector(`#${newWord.docEditorId}-doc-selector-container`);
       if (documentContainer) {
-        rootElId.removeChild( documentContainer );
+        // rootElId.removeChild( documentContainer );
+
+        // JC 21/5/19: see tutorial
+        var e = document.querySelector(`#${newWord.docEditorId}-doc-selector-container`);        
+        //e.firstElementChild can be used. 
+        var child = e.lastElementChild;  
+        while (child) { 
+            e.removeChild(child); 
+            child = e.lastElementChild; 
+        } 
+
       }
+
+      // JC 21/5/19
+
     };
 
    /**
